@@ -63,6 +63,15 @@ return {
 			oil.setup()
 			vim.keymap.set("n", "-", oil.toggle_float, {})
 		end
+	},
+	{
+		"tpope/vim-fugitive",
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
 	}
 }
 
