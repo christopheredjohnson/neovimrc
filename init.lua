@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
-vim.g.background = "light"
+vim.keymap.set("n", "<leader><leader>", ":nohlsearch<CR>")
 
+vim.g.background = "light"
 vim.opt.swapfile = false
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
