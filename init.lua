@@ -23,48 +23,4 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	{
-		"catppuccin/nvim",
-		lazy = false,
-		name = "catppuccin",
-		prority = 1000,
-		config = function()
-			vim.cmd.colorscheme "catppuccin"
-		end
-	},
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-	},
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.5",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("telescope").setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
-				},
-			})
-
-			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>bf", builtin.buffers, {})
-			vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-			require("telescope").load_extension("ui-select")
-		end
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function()
-			local config = require("nvim-treesitter.configs")
-			config.setup({
-				auto_install = true,
-				highlight = { enabled = true },
-				indent = { enabled = true },
-			})
-		end
-	}
-}, {})
+require("lazy").setup("plugins")
