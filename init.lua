@@ -10,6 +10,8 @@ vim.wo.cursorline = true
 vim.wo.nu = true
 vim.wo.rnu = true
 
+vim.o.termguicolors = true
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({

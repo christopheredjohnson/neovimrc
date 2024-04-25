@@ -17,7 +17,7 @@ return {
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 		config = function ()
-			vim.cmd("colorscheme nightfox")
+			vim.cmd.colorscheme "nordfox"
 		end
 	},
 	{
@@ -164,4 +164,13 @@ return {
 			vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 		end,
 	},
+	{
+		'freddiehaddad/feline.nvim',
+		opts = {},
+		config = function ()
+			require("feline").setup({
+
+			})
+		end
+	}
 }
