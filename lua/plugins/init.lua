@@ -134,6 +134,10 @@ return {
 
 			local lspconfig = require("lspconfig")
 
+			lspconfig.intelephense.setup({
+				capabilities = capabilities,
+			})
+
 			lspconfig.lua_ls.setup({
 				settings = {
 					Lua = {
@@ -166,11 +170,6 @@ return {
 	},
 	{
 		'freddiehaddad/feline.nvim',
-		opts = {},
-		config = function ()
-			require("feline").setup({
-
-			})
-		end
+		opts = {}
 	}
 }
