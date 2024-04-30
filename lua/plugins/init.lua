@@ -12,13 +12,13 @@ return {
 		end,
 	},
 	{
-		"EdenEast/nightfox.nvim"
+		"EdenEast/nightfox.nvim",
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
-		config = function ()
-			vim.cmd.colorscheme "nordfox"
-		end
+		config = function()
+			vim.cmd.colorscheme("nordfox")
+		end,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -169,7 +169,7 @@ return {
 		end,
 	},
 	{
-		'freddiehaddad/feline.nvim',
-		opts = {}
-	}
+		"freddiehaddad/feline.nvim",
+		opts = {},
+	},
 }
