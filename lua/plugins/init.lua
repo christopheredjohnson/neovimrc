@@ -1,6 +1,6 @@
 return {
     {
-        "gpanders/editorconfig.nvim"
+        "gpanders/editorconfig.nvim",
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -17,7 +17,7 @@ return {
     {
         "EdenEast/nightfox.nvim",
         config = function()
-            vim.cmd.colorscheme("nordfox")
+            vim.cmd.colorscheme("duskfox")
         end,
     },
     {
@@ -144,23 +144,23 @@ return {
             lspconfig.lua_ls.setup({
                 on_init = function(client)
                     local path = client.workspace_folders[1].name
-                    if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+                    if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
                         return
                     end
 
-                    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                    client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
                         runtime = {
-                            version = 'LuaJIT'
+                            version = "LuaJIT",
                         },
                         workspace = {
                             checkThirdParty = false,
-                            library = vim.api.nvim_get_runtime_file("", true)
-                        }
+                            library = vim.api.nvim_get_runtime_file("", true),
+                        },
                     })
                 end,
                 settings = {
-                    Lua = {}
-                }
+                    Lua = {},
+                },
             })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
@@ -183,7 +183,14 @@ return {
         end,
     },
     {
-        "freddiehaddad/feline.nvim",
-        opts = {},
+        'freddiehaddad/feline.nvim',
+        config = function(_, opts)
+            local feline = require('feline')
+            feline.setup(opts)
+        end,
+        dependencies = { 'EdenEast/nightfox.nvim', 'lewis6991/gitsigns.nvim', 'nvim-tree/nvim-web-devicons' },
+        init = function()
+
+        end,
     },
 }
