@@ -181,16 +181,5 @@ return {
 
             vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
         end,
-    },
-    {
-        'freddiehaddad/feline.nvim',
-        config = function(_, opts)
-            local feline = require('feline')
-            feline.setup(opts)
-        end,
-        dependencies = { 'EdenEast/nightfox.nvim', 'lewis6991/gitsigns.nvim', 'nvim-tree/nvim-web-devicons' },
-        init = function()
-
-        end,
-    },
+    }
 }
