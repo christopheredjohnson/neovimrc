@@ -3,55 +3,57 @@
 --------------------------------------------------------------------------------
 
 -- install the lazy.nvim plugin manager
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lazy_is_installed = vim.loop.fs_stat(lazypath)
-if not lazy_is_installed then vim.fn.system({
-	'git',
-	'clone',
-	'--filter=blob:none',
-	'https://github.com/folke/lazy.nvim.git',
-	'--branch=stable',
-	lazypath,
-}) end
+if not lazy_is_installed then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
+end
 vim.opt.runtimepath:prepend(lazypath)
-
 
 --------------------------------------------------------------------------------
 -- CONFIGURE KEYMAPS
 --------------------------------------------------------------------------------
 
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 local map = vim.keymap.set
 
 -- windows
-map('n', '<leader>wv', '<cmd>vsplit<cr>', { desc = 'Split current window vertically' })
-map('n', '<leader>wh', '<cmd>split<cr>', { desc = 'Split current window horizontally' })
-map('n', '<leader>w=', '<C-W>=', { desc = 'Make windows equal size' })
-map('n', '<leader>wd', '<C-W>c', { desc = 'Delete window', remap = true })
+map("n", "<leader>wv", "<cmd>vsplit<cr>", { desc = "Split current window vertically" })
+map("n", "<leader>wh", "<cmd>split<cr>", { desc = "Split current window horizontally" })
+map("n", "<leader>w=", "<C-W>=", { desc = "Make windows equal size" })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 
 -- better up/down
-map({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- quickfix
-map('n', '[q', '<cmd>cprevious<cr>', { desc = 'Previous quickfix' })
-map('n', ']q', '<cmd>cnext<cr>', { desc = 'Next quickfix' })
+map("n", "[q", "<cmd>cprevious<cr>", { desc = "Previous quickfix" })
+map("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix" })
 
 -- clear search with <esc>
-map({ 'i', 'n' }, '<esc>', '<cmd>nohlsearch<cr><esc>', { desc = 'Escape and clear hlsearch' })
+map({ "i", "n" }, "<esc>", "<cmd>nohlsearch<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- save file
-map({ 'i', 'n', 's', 'x' }, '<C-s>', '<cmd>w<cr>', { desc = 'Save file' })
+map({ "i", "n", "s", "x" }, "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
 
 -- quit
-map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit all' })
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- lazy
-map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- mason
-map('n', '<leader>m', '<cmd>Mason<cr>', { desc = 'Mason' })
+map("n", "<leader>m", "<cmd>Mason<cr>", { desc = "Mason" })
 
 --------------------------------------------------------------------------------
 -- NEOVIM OPTIONS
@@ -72,20 +74,20 @@ vim.opt.splitbelow = true
 vim.opt.showtabline = 0
 
 -- yank/paste behavior
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- persistent undo
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 
 -- disable mouse support
-vim.opt.mouse = ''
+vim.opt.mouse = ""
 
 -- autowrite
 vim.opt.autowrite = true
 
 -- insert mode completion behavior
-vim.opt.completeopt:append({ 'menuone', 'noselect' })
+vim.opt.completeopt:append({ "menuone", "noselect" })
 
 -- hide * markup for bold and italic
 vim.opt.conceallevel = 3
@@ -98,8 +100,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- grep configuration
-vim.opt.grepformat = '%f:%l:%c:%m'
-vim.opt.grepprg = 'rg --vimgrep'
+vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.grepprg = "rg --vimgrep"
 
 -- popup menu
 vim.pumheight = 10
@@ -110,14 +112,16 @@ vim.opt.shortmess:append({ a = true, c = true, I = true, W = true })
 -- AUTO COMMANDS
 --------------------------------------------------------------------------------
 
-local function augroup(name) return vim.api.nvim_create_augroup('Init' .. name, { clear = true }) end
+local function augroup(name)
+	return vim.api.nvim_create_augroup("Init" .. name, { clear = true })
+end
 
 --------------------------------------------------------------------------------
 -- LOAD PLUGINS
 --------------------------------------------------------------------------------
 
-require('lazy').setup({ { import = 'plugins' } }, {
-	install = { colorscheme = { 'nightfox' } },
+require("lazy").setup({ { import = "plugins" } }, {
+	install = { colorscheme = { "nightfox" } },
 	concurrency = #vim.loop.cpu_info(),
 	checker = { enabled = true, concurrency = #vim.loop.cpu_info(), notify = false },
 	change_detection = { notify = false },
