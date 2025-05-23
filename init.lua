@@ -36,10 +36,6 @@ map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
--- quickfix
-map("n", "[q", "<cmd>cprevious<cr>", { desc = "Previous quickfix" })
-map("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix" })
-
 -- clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>nohlsearch<cr><esc>", { desc = "Escape and clear hlsearch" })
 
@@ -48,12 +44,6 @@ map({ "i", "n", "s", "x" }, "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-
--- lazy
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
-
--- mason
-map("n", "<leader>m", "<cmd>Mason<cr>", { desc = "Mason" })
 
 --------------------------------------------------------------------------------
 -- NEOVIM OPTIONS
